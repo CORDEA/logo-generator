@@ -49,6 +49,6 @@ view model =
     div []
     [
         object [ type_ "image/svg+xml", A.attribute "data" "src/images/logo.svg" ] [],
-        div [] (List.concat [List.map addSlider ["R", "G", "B", "A"]]),
-        div [] (List.concat [List.map addSlider ["R", "G", "B", "A"]])
+        div [] (List.concat [[text "Foreground"], List.map addSlider ["R", "G", "B", "A"]]),
+        div [] (List.concat [[text "Background"], List.map addSlider ["R", "G", "B", "A"]])
     ]
