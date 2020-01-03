@@ -17,22 +17,27 @@ main =
 -- MODEL
 
 type alias Model =
-    { background : String
+    {
+        background : String,
+        foreground : String
     }
 
 init : Model
-init = { background = "" }
+init = { background = "", foreground = "" }
 
 -- UPDATE
 
 type Msg
     = ChangeBackground String
+    | ChangeForeground String
 
 update : Msg -> Model -> Model
 update msg model =
     case msg of
         ChangeBackground x ->
             { model | background = x }
+        ChangeForeground x ->
+            { model | foreground = x }
 
 -- VIEW
 
@@ -44,5 +49,9 @@ view model =
         div []
         [
             input [ value model.background, onInput ChangeBackground ] []
+        ],
+        div []
+        [
+            input [ value model.foreground, onInput ChangeForeground ] []
         ]
     ]
