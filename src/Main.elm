@@ -2,7 +2,7 @@ module Main exposing (main)
 
 import Browser
 import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html.Attributes as A exposing (..)
 
 -- MAIN
 
@@ -33,9 +33,22 @@ update msg model =
 
 -- VIEW
 
+addSlider x =
+    div [] [
+        text x,
+        input [ type_ "range",
+            A.min "0",
+            A.max "255",
+            value "10"
+        ] []
+    ]
+
+
 view : Model -> Html Msg
 view model =
     div []
     [
-        object [ type_ "image/svg+xml", attribute "data" "src/images/logo.svg" ] []
+        object [ type_ "image/svg+xml", A.attribute "data" "src/images/logo.svg" ] [],
+        div [] (List.concat [List.map addSlider ["R", "G", "B", "A"]]),
+        div [] (List.concat [List.map addSlider ["R", "G", "B", "A"]])
     ]
